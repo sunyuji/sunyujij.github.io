@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实验三</title>
+</head>
+<body>
+    <div>
+        <form action="a.php">
+            <input id="showOne" type="text" value="00:00:00">
+            <input type="radio" id="radio1" name="text" checked="checked"  onchange="int = setInterval('setTime()',1000)">启动时钟</input>
+            <input type="radio" id="radio2" name="text" onchange="int = clearInterval(int);document.getElementById('show').innerHTML='停止时钟'">停止时钟</input>
+        </form>
+    </div>
+    <div id="show"></div>
+    <script type="text/javascript">
+        var int = setInterval("setTime();",1000);
+        function setTime()
+        {
+            var dateTime = new Date();
+            hour = dateTime.getHours();
+            minute = dateTime.getMinutes();
+            second = dateTime.getSeconds();
+            if(hour<10)
+            {
+                hour = "0"+hour;
+            }
+            if(minute<10)
+            {
+                minute="0"+minute;
+            }
+            if(second<10)
+            {
+                second="0"+second;
+            }  
+            document.getElementById("showOne").value=hour+":"+minute+":"+second;
+            document.getElementById('show').innerHTML='启动时钟'
+        }
+        
+    </script>
+</body>
+</html>
